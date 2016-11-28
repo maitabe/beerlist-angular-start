@@ -6,26 +6,30 @@ app.factory('beers', function() {
 			name: 'Corona',
 			style: 'Pale lager',
 			abv: '4.5%',
-			image: 'img/corona.jpg'
+			image: 'img/corona.jpg',
+			rate: 0
 		},
 		{
 			id: 1,
 			name: 'Heineken',
 			style: 'Light lager',
 			abv: '5.4%',
-			image: 'img/heineken.jpg'
+			image: 'img/heineken.jpg',
+			rate: 0
 		},
 		{
 			id: 2,
 			name: 'Maccabi',
 			style: 'Dark lager',
 			abv: '7.8%',
-			image: 'img/maccabi.jpeg'
+			image: 'img/maccabi.jpeg',
+			rate: 0
 		}
 
 	];
 
 	var addBeer = function(newBeer) {
+		newBeer.id = beerList.length;
 		beerList.push(newBeer);
 	};
 
@@ -33,16 +37,25 @@ app.factory('beers', function() {
 		beerList.splice(index, 1);
 	};
 
-	// var ratingBeer = function() {
+	var rateBeer = function(id, rate) {
 
-	// };
+		//update rating value of selected beer
+		for (var i = 0; i < beerList.length; i++) {
+			if(beerList[i].id === id) {
+				//beer found, change rate
+				beerList[i].rate = rate;
+				break;
+			}
+		}
+
+	};
 
 
 	return {
 		beerList:beerList,
 		addBeer:addBeer,
 		removeBeer:removeBeer,
-		// ratingBeer:ratingBeer
+		rateBeer:rateBeer
 	};
 
 });
