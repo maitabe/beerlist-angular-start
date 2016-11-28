@@ -25,13 +25,13 @@ app.factory('beers', function() {
 
 	];
 
-	// var addBeer = function() {
+	var addBeer = function(newBeer) {
+		beerList.push(newBeer);
+	};
 
-	// };
-
-	// var removeBeer = function() {
-
-	// };
+	var removeBeer = function(index) {
+		beerList.splice(index, 1);
+	};
 
 	// var ratingBeer = function() {
 
@@ -40,8 +40,8 @@ app.factory('beers', function() {
 
 	return {
 		beerList:beerList,
-		// addBeer:addBeer,
-		// removeBeer:removeBeer,
+		addBeer:addBeer,
+		removeBeer:removeBeer,
 		// ratingBeer:ratingBeer
 	};
 
